@@ -321,6 +321,7 @@ public class LevelCreator {
         enemy.setLives(3);
 
         _entityManager.addToGroup(EntityGroup.DESTROYABLE, enemy);
+        _entityManager.addToGroup(EntityGroup.ENEMY, enemy);
     }
 
     private void createBrick(int x, int y, int chunkWidth, int chunkHeight) {

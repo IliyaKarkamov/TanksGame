@@ -7,12 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="182b62d5-aab4-4bd3-9d20-dab625b69551" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/AutoMovable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/AutoShooting.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/KeyboardMovable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/KeyboardMovable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/Physics.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/Physics.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/karkamov/tanks/map/LevelCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/karkamov/tanks/map/LevelCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/karkamov/tanks/ui/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/karkamov/tanks/ui/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/karkamov/tanks/ui/UIManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/karkamov/tanks/ui/UIManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +29,7 @@
       <file leaf-file-name="AutoMovable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/AutoMovable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="-170">
               <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -43,26 +42,49 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LevelCreator.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/map/LevelCreator.java">
+      <file leaf-file-name="EntityManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="198" column="25" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
+            <state relative-caret-position="-1005">
+              <caret line="22" column="21" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="21" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5181#5444#0" expanded="true" />
-                <element signature="e#5443#5444#0" expanded="true" />
-                <element signature="e#8272#10330#0" expanded="true" />
-                <element signature="e#10329#10330#0" expanded="true" />
-                <element signature="e#8418#8677#0" expanded="true" />
-                <element signature="e#8676#8677#0" expanded="true" />
-                <element signature="e#8552#10125#0" expanded="true" />
-                <element signature="e#10124#10125#0" expanded="true" />
-                <element signature="e#12442#12443#0" expanded="true" />
-                <element signature="e#12473#12474#0" expanded="true" />
-                <element signature="e#12504#12505#0" expanded="true" />
-                <element signature="e#12535#12536#0" expanded="true" />
+                <element signature="e#2786#2787#0" expanded="true" />
+                <element signature="e#2818#2819#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UIManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/ui/UIManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GamePanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/ui/GamePanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="151">
+              <caret line="48" column="21" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EntityGroup.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityGroup.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -95,18 +117,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Image.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/Image.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="406">
-              <caret line="32" column="20" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="20" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AutoShooting.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/AutoShooting.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -116,30 +126,6 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#249#250#0" expanded="true" />
                 <element signature="e#278#279#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Physics.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/Physics.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="KeyboardShooting.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/KeyboardShooting.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="105" column="9" lean-forward="true" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -202,12 +188,8 @@
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/map/Chunk.java" />
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/map/MapReader.java" />
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/map/LevelReader.java" />
-        <option value="$PROJECT_DIR$/src/com/karkamov/tanks/ui/UIManager.java" />
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/Image.java" />
-        <option value="$PROJECT_DIR$/src/com/karkamov/tanks/ui/GamePanel.java" />
-        <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityManager.java" />
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/map/enums/EntityType.java" />
-        <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityGroup.java" />
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/interfaces/Component.java" />
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/Position.java" />
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/events/OutOfBoundsListener.java" />
@@ -219,7 +201,11 @@
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/Physics.java" />
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/AutoShooting.java" />
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/AutoMovable.java" />
+        <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityGroup.java" />
         <option value="$PROJECT_DIR$/src/com/karkamov/tanks/map/LevelCreator.java" />
+        <option value="$PROJECT_DIR$/src/com/karkamov/tanks/ui/GamePanel.java" />
+        <option value="$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityManager.java" />
+        <option value="$PROJECT_DIR$/src/com/karkamov/tanks/ui/UIManager.java" />
       </list>
     </option>
   </component>
@@ -232,7 +218,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="y" value="1" />
     <option name="width" value="1452" />
@@ -276,14 +262,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="tanks" type="462c0819:PsiDirectoryNode" />
               <item name="engine" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TanksGame" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TanksGame" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="tanks" type="462c0819:PsiDirectoryNode" />
-              <item name="map" type="462c0819:PsiDirectoryNode" />
+              <item name="entities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TanksGame" type="b2602c69:ProjectViewProjectNode" />
@@ -359,12 +338,12 @@
       <workItem from="1528401005580" duration="951000" />
       <workItem from="1528465137507" duration="4491000" />
       <workItem from="1528476569813" duration="81319000" />
-      <workItem from="1528723504509" duration="30057000" />
+      <workItem from="1528723504509" duration="31728000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126914000" />
+    <option name="totallyTimeSpent" value="128585000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -583,16 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/Display.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/ui/MenuPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -604,26 +573,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/ui/UIManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/ui/GamePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="69" column="14" selection-start-line="69" selection-start-column="14" selection-end-line="69" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/interfaces/Component.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -631,13 +580,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" lean-forward="true" selection-start-column="14" selection-end-column="14" />
         </state>
       </provider>
     </entry>
@@ -689,16 +631,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="43" column="78" lean-forward="true" selection-start-line="43" selection-start-column="78" selection-end-line="43" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/map/LevelReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
@@ -739,7 +671,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/Physics.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
-          <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+          <caret line="65" column="5" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -749,7 +681,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/KeyboardShooting.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
-          <caret line="105" column="9" lean-forward="true" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
+          <caret line="105" column="9" selection-start-line="105" selection-start-column="9" selection-end-line="105" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -802,24 +734,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/AutoMovable.java">
+    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityGroup.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
+        <state relative-caret-position="136">
+          <caret line="8" column="9" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/entities/EntityManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1005">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#247#248#0" expanded="true" />
-            <element signature="e#276#277#0" expanded="true" />
-            <element signature="e#656#657#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
+            <element signature="e#2786#2787#0" expanded="true" />
+            <element signature="e#2818#2819#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/Display.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/map/LevelCreator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="198" column="25" selection-start-line="198" selection-start-column="25" selection-end-line="198" selection-end-column="25" />
+        <state relative-caret-position="66">
+          <caret line="321" lean-forward="true" selection-start-line="321" selection-end-line="321" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5181#5444#0" expanded="true" />
@@ -834,6 +781,40 @@
             <element signature="e#12473#12474#0" expanded="true" />
             <element signature="e#12504#12505#0" expanded="true" />
             <element signature="e#12535#12536#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/engine/components/AutoMovable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="23" column="65" selection-start-line="23" selection-start-column="65" selection-end-line="23" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#247#248#0" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+            <element signature="e#656#657#0" expanded="true" />
+            <element signature="e#728#729#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/ui/GamePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="48" column="21" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/karkamov/tanks/ui/UIManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="76" column="37" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

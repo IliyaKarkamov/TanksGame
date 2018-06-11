@@ -99,4 +99,11 @@ public class GamePanel extends JPanel {
 
         _playing = true;
     }
+
+    public boolean isGameOver() {
+        if (_entityManager.isGameOver())
+            _playing = false;
+
+        return !_playing;
+    }
 }

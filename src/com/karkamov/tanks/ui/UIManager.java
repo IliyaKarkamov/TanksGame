@@ -72,6 +72,10 @@ public class UIManager {
     public void updateCurrentState() {
         if (_state == UIState.NEW_GAME || _state == UIState.CONTINUE_GAME) {
             _gamePanel.update();
+
+            if (_gamePanel.isGameOver()) {
+                setState(UIState.MENU);
+            }
         }
     }
 }

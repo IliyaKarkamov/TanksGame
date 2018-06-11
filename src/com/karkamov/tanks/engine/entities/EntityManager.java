@@ -8,6 +8,7 @@ import java.util.Map;
 public class EntityManager {
     private ArrayList<Entity> _entities = new ArrayList<>();
     private Map<EntityGroup, ArrayList<Entity>> _groupedEntities = new EnumMap<>(EntityGroup.class);
+    private boolean _gameOver;
 
     public void init() {
         for (Entity entity : _entities) {
@@ -16,6 +17,13 @@ public class EntityManager {
     }
 
     public void update() {
+        ArrayList<Entity> enemies = _groupedEntities.get(EntityGroup.ENEMY);
+
+        if (enemies == null || enemies.isEmpty()) {
+            _gameOver = true;
+            return;
+        }
+
         for (Entity entity : _entities) {
             entity.update();
         }
@@ -89,6 +97,10 @@ public class EntityManager {
     public void removeAll() {
         _entities.clear();
         _groupedEntities.clear();
+    }
+
+    public boolean isGameOver() {
+        return _gameOver;
     }
 }
 
