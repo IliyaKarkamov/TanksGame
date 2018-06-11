@@ -1,9 +1,11 @@
 package com.karkamov.tanks.map.enums;
 
 public enum EntityType {
-    Empty,
-    Player,
-    Enemy,
-    Brick,
-    UndestroyableBrick
+    EMPTY,
+    PLAYER,
+    ENEMY,
+    BRICK,
+    UNDESTROYABLE_BRICK,
+    GRASS,
+    WATER
 }

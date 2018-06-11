@@ -24,8 +24,37 @@ public class EntityManager {
     }
 
     public void draw(Graphics g) {
-        for (Entity entity : _entities) {
-            entity.draw(g);
+        ArrayList<Entity> undergroundDecoration =
+                _groupedEntities.get(EntityGroup.UNDERGROUND_DECORATION);
+
+        if (undergroundDecoration != null) {
+            for (Entity entity : undergroundDecoration) {
+                entity.draw(g);
+            }
+        }
+
+        ArrayList<Entity> destroyable = _groupedEntities.get(EntityGroup.DESTROYABLE);
+
+        if (destroyable != null) {
+            for (Entity entity : destroyable) {
+                entity.draw(g);
+            }
+        }
+
+        ArrayList<Entity> undestroyable = _groupedEntities.get(EntityGroup.UNDESTROYABLE);
+
+        if (undestroyable != null) {
+            for (Entity entity : undestroyable) {
+                entity.draw(g);
+            }
+        }
+
+        ArrayList<Entity> abovegroundDecoration =
+                _groupedEntities.get(EntityGroup.ABOVEGROUND_DECORATION);
+        if (abovegroundDecoration != null) {
+            for (Entity entity : abovegroundDecoration) {
+                entity.draw(g);
+            }
         }
     }
 

@@ -4,8 +4,6 @@ import com.karkamov.tanks.engine.components.enums.MoveDirection;
 import com.karkamov.tanks.engine.components.interfaces.Component;
 import com.karkamov.tanks.engine.entities.Entity;
 
-import java.awt.*;
-
 public class BulletPhysics extends Component {
     public Position position;
     public MoveDirection direction;
@@ -24,7 +22,7 @@ public class BulletPhysics extends Component {
     }
 
     @Override
-    public void update() {
+    public synchronized void update() {
         if (position == null)
             return;
 

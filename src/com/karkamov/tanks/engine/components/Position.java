@@ -25,7 +25,7 @@ public class Position extends Component {
     }
 
     @Override
-    public void update() {
+    public synchronized void update() {
         _bounds.setLocation(x, y);
     }
 

@@ -1,22 +1,17 @@
 package com.karkamov.tanks.ui;
 
+import com.karkamov.tanks.Main;
 import com.karkamov.tanks.engine.Display;
-import com.karkamov.tanks.engine.components.*;
-import com.karkamov.tanks.engine.components.Image;
-import com.karkamov.tanks.engine.components.enums.MoveDirection;
-import com.karkamov.tanks.engine.components.events.BulletPositionListener;
-import com.karkamov.tanks.engine.components.events.MoveDirectionListener;
-import com.karkamov.tanks.engine.components.events.OutOfBoundsListener;
-import com.karkamov.tanks.engine.entities.Entity;
-import com.karkamov.tanks.engine.entities.EntityGroup;
 import com.karkamov.tanks.engine.entities.EntityManager;
 import com.karkamov.tanks.engine.KeyboardListener;
 import com.karkamov.tanks.map.LevelCreator;
 import com.karkamov.tanks.map.LevelReader;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class GamePanel extends JPanel {
     private final Display _display;
@@ -29,6 +24,8 @@ public class GamePanel extends JPanel {
     private String _lastLevel;
     private boolean _playing = false;
 
+    private BufferedImage _terrainImage = null;
+
     public GamePanel(UIManager uiManager, Display display, KeyboardListener keyboardListener) {
         _uiManager = uiManager;
         _display = display;
@@ -40,6 +37,12 @@ public class GamePanel extends JPanel {
         _entityManager.init();
 
         setFocusable(false);
+
+        try {
+            _terrainImage = ImageIO.read(Main.class.getResource("resources/terrain.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void update() {
@@ -53,14 +56,28 @@ public class GamePanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        int width = _display.getWidth();
+        int height = _display.getHeight();
+
         // clear
-        g.clearRect(0, 0, _display.getWidth(), _display.getHeight());
+        g.clearRect(0, 0, width, height);
 
         // draw
-        g.setColor(Color.BLACK);
-        g.drawString("fps: " + _uiManager.getFps(), _display.getWidth() - 50, 20);
+        g.drawImage(_terrainImage, 0, 0, width, height, null);
 
         _entityManager.draw(g);
+
+        int offsetX = _levelCreator.getOffsetX();
+        int offsetY = _levelCreator.getOffsetY();
+
+        g.setColor(Color.BLACK);
+        g.fillRect(0, 0, width, offsetY);
+        g.fillRect(0, 0, offsetX, height);
+        g.fillRect(0, height - offsetY, width, offsetY);
+        g.fillRect(width - offsetX, 0, offsetX, height);
+
+        g.setColor(Color.RED);
+        g.drawString("fps: " + _uiManager.getFps(), width - 50, 20);
     }
 
     public void setLastLevel(String lastLevel) {

@@ -5,6 +5,8 @@ import com.karkamov.tanks.engine.components.events.OutOfBoundsListener;
 import com.karkamov.tanks.engine.components.interfaces.Component;
 import com.karkamov.tanks.engine.entities.Entity;
 
+import java.util.ArrayList;
+
 public class Physics extends Component {
 
     public Position position;
@@ -33,21 +35,17 @@ public class Physics extends Component {
     }
 
     @Override
-    public void update() {
-        if (_outOfBoundsListener != null &&
-                _outOfBoundsListener.onPositionChange(position)) {
-            if (_intersecting && _intersectionDirection != direction) {
-                position.x += currentVelocityX;
-                position.y += currentVelocityY;
-                return;
-            }
+    public synchronized void update() {
+        Position newPos = new Position(_entity, position.x + currentVelocityX,
+                position.y + currentVelocityY, position.getRectangle().getSize());
 
-            _intersecting = true;
-            _intersectionDirection = direction;
+        if (_outOfBoundsListener != null &&
+                _outOfBoundsListener.onPositionChange(newPos)) {
+
+            currentVelocityX = 0;
+            currentVelocityX = 0;
             return;
         }
-
-        _intersecting = false;
 
         position.x += currentVelocityX;
         position.y += currentVelocityY;
@@ -58,6 +56,17 @@ public class Physics extends Component {
     }
 
     public void setVelocity(int x, int y, MoveDirection direction) {
+        Position newPos = new Position(_entity, position.x + x,
+                position.y + y, position.getRectangle().getSize());
+
+        if (_outOfBoundsListener != null &&
+                _outOfBoundsListener.onPositionChange(newPos)) {
+
+            currentVelocityX = 0;
+            currentVelocityX = 0;
+            return;
+        }
+
         currentVelocityX = x;
         currentVelocityY = y;
         this.direction = direction;

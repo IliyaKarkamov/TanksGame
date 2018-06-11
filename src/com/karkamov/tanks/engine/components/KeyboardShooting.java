@@ -13,7 +13,6 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class KeyboardShooting extends Component {
     private static final Dimension _bulletDimension = new Dimension(10, 10);
@@ -29,15 +28,12 @@ public class KeyboardShooting extends Component {
     private static final int _maxTicksUntilNewBullet = 35;
     private int _ticksUntilNewBullet = _maxTicksUntilNewBullet;
 
-    private final Dimension _bounds;
-
     private BulletPositionListener _bulletPositionListener;
 
-    public KeyboardShooting(Entity entity, KeyboardListener keyboardListener, Dimension bounds) {
+    public KeyboardShooting(Entity entity, KeyboardListener keyboardListener) {
         super(entity);
 
         _keyboardListener = keyboardListener;
-        _bounds = bounds;
     }
 
     @Override
@@ -52,7 +48,7 @@ public class KeyboardShooting extends Component {
     }
 
     @Override
-    public void update() {
+    public synchronized void update() {
         if (_ticksUntilNewBullet >= _maxTicksUntilNewBullet &&
                 _keyboardListener.isKeyPressed(KeyEvent.VK_SPACE)) {
             _bulletsPhysics.add(getNewBulletPhysics());
@@ -70,16 +66,8 @@ public class KeyboardShooting extends Component {
     }
 
     private void refreshBullets() {
-        for (Iterator<BulletPhysics> iterator = _bulletsPhysics.iterator(); iterator.hasNext(); ) {
-            BulletPhysics physics = iterator.next();
-
-            if (physics.position.left() < 0 || physics.position.top() < 0 ||
-                    physics.position.right() > _bounds.width || physics.position.bottom() > _bounds.height)
-                iterator.remove();
-            else if (_bulletPositionListener != null && _bulletPositionListener.onPositionChanged(physics)) {
-                iterator.remove();
-            }
-        }
+        _bulletsPhysics.removeIf(physics -> _bulletPositionListener != null
+                && _bulletPositionListener.onPositionChanged(physics));
     }
 
     @Override

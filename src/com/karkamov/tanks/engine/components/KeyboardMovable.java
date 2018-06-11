@@ -21,6 +21,9 @@ public class KeyboardMovable extends Component {
     private Physics _physics;
     private MoveDirectionListener _moveDirectionListener = null;
 
+    private int _offsetY;
+    private int _offsetX;
+
     public KeyboardMovable(Entity entity, KeyboardListener keyboardListener,
                            int top, int left, int bottom, int right,
                            Dimension bounds) {
@@ -42,13 +45,13 @@ public class KeyboardMovable extends Component {
     }
 
     @Override
-    public void update() {
-        if (_keyboardListener.isKeyPressed(_topKey) && _physics.position.top() > 0) {
+    public synchronized void update() {
+        if (_keyboardListener.isKeyPressed(_topKey) && _physics.position.top() > _offsetY) {
             _physics.setVelocity(0, -_physics.velocityY, MoveDirection.TOP);
 
             if (_moveDirectionListener != null)
                 _moveDirectionListener.onDirectionChanged(MoveDirection.TOP);
-        } else if (_keyboardListener.isKeyPressed(_leftKey) && _physics.position.left() > 0) {
+        } else if (_keyboardListener.isKeyPressed(_leftKey) && _physics.position.left() > _offsetX) {
             _physics.setVelocity(-_physics.velocityX, 0, MoveDirection.LEFT);
 
             if (_moveDirectionListener != null)
@@ -70,5 +73,10 @@ public class KeyboardMovable extends Component {
 
     public void setMoveDirectionListener(MoveDirectionListener listener) {
         _moveDirectionListener = listener;
+    }
+
+    public void setOffsetXY(int offsetX, int offsetY) {
+        _offsetX = offsetX;
+        _offsetY = offsetY;
     }
 }

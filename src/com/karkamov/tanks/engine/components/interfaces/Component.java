@@ -15,7 +15,7 @@ public abstract class Component {
     public void init() {
     }
 
-    public void update() {
+    public synchronized void update() {
     }
 
     public synchronized void draw(Graphics g) {
