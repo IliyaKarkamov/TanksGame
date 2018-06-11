@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="TanksGame:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/TanksGame_jar</output-path>
+    <root id="archive" name="TanksGame.jar">
+      <element id="module-output" name="TanksGame" />
+    </root>
+  </artifact>
+</component>
