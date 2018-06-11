@@ -196,6 +196,7 @@ public class LevelCreator {
             }
         });
 
+        player.setLives(3);
         _entityManager.addToGroup(EntityGroup.DESTROYABLE, player);
     }
 
@@ -205,11 +206,118 @@ public class LevelCreator {
         Dimension playerSize = new Dimension(chunkWidth, chunkHeight);
 
         enemy.addComponent(new Position(enemy, x, y, playerSize));
-        enemy.addComponent(new Physics(enemy, 3, 3));
+        Physics physics = new Physics(enemy, 2, 2);
+
+        enemy.addComponent(physics);
 
         Image imageComponent = new Image(enemy, _display, playerSize,
                 "resources/entities/enemy.png");
         enemy.addComponent(imageComponent);
+
+        AutoShooting autoShooting = new AutoShooting(enemy);
+        autoShooting.setBulletPositionListener(new BulletPositionListener() {
+            @Override
+            public boolean onPositionChanged(BulletPhysics physics) {
+                if (physics.position.left() < _offsetX || physics.position.top() < _offsetY ||
+                        physics.position.right() > _display.getWidth() - _offsetX ||
+                        physics.position.bottom() > _display.getHeight() - _offsetY) {
+                    return true;
+                }
+
+                ArrayList<Entity> shootThrough = _entityManager.getEntityGroup(EntityGroup.SHOOT_THROUGH);
+                if (shootThrough != null) {
+                    for (Entity entity : shootThrough) {
+                        Position position = (Position) entity.getComponent(Position.class);
+
+                        if (physics.position.intersects(position)) {
+                            return false;
+                        }
+                    }
+                }
+
+                ArrayList<Entity> destroyable = _entityManager.getEntityGroup(EntityGroup.DESTROYABLE);
+                if (destroyable != null) {
+                    for (Entity entity : destroyable) {
+                        if (entity == enemy)
+                            continue;
+
+                        Position position = (Position) entity.getComponent(Position.class);
+
+                        if (physics.position.intersects(position)) {
+                            entity.destroy();
+                            return true;
+                        }
+                    }
+                }
+
+                ArrayList<Entity> undestroyable = _entityManager.getEntityGroup(EntityGroup.UNDESTROYABLE);
+                if (undestroyable != null) {
+                    for (Entity entity : undestroyable) {
+                        Position position = (Position) entity.getComponent(Position.class);
+
+                        if (physics.position.intersects(position)) {
+                            return true;
+                        }
+                    }
+                }
+
+                return false;
+            }
+        });
+        enemy.addComponent(autoShooting);
+
+        AutoMovable autoMovable = new AutoMovable(enemy);
+        autoMovable.setMoveDirectionListener(new MoveDirectionListener() {
+            @Override
+            public void onDirectionChanged(MoveDirection direction) {
+                imageComponent.setDirection(direction);
+                autoShooting.setMoveDirection(direction);
+            }
+        });
+        enemy.addComponent(autoMovable);
+
+        physics.setOutOfBoundsListener(new OutOfBoundsListener() {
+            @Override
+            public boolean onPositionChange(Position position) {
+                if (position.left() < _offsetX || position.top() < _offsetY ||
+                        position.right() > _display.getWidth() - _offsetX ||
+                        position.bottom() > _display.getHeight() - _offsetY) {
+                    return true;
+                }
+
+                ArrayList<Entity> destroyable = _entityManager.getEntityGroup(EntityGroup.DESTROYABLE);
+
+                if (destroyable != null) {
+                    for (Entity entity : destroyable) {
+                        if (enemy != entity) {
+                            Position entityPosition = (Position) entity.getComponent(Position.class);
+
+                            if (position.intersects(entityPosition)) {
+                                autoMovable.randomize();
+                                return true;
+                            }
+                        }
+                    }
+                }
+
+                ArrayList<Entity> undestroyable = _entityManager.getEntityGroup(EntityGroup.UNDESTROYABLE);
+
+                if (undestroyable != null) {
+                    for (Entity entity : undestroyable)
+                        if (enemy != entity) {
+                            Position entityPosition = (Position) entity.getComponent(Position.class);
+
+                            if (position.intersects(entityPosition)) {
+                                autoMovable.randomize();
+                                return true;
+                            }
+                        }
+                }
+
+                return false;
+            }
+        });
+
         enemy.setLives(3);
 
         _entityManager.addToGroup(EntityGroup.DESTROYABLE, enemy);

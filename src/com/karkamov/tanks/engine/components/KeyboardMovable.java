@@ -47,27 +47,27 @@ public class KeyboardMovable extends Component {
     @Override
     public synchronized void update() {
         if (_keyboardListener.isKeyPressed(_topKey) && _physics.position.top() > _offsetY) {
-            _physics.setVelocity(0, -_physics.velocityY, MoveDirection.TOP);
+            _physics.setVelocity(0, -_physics.velocityY);
 
             if (_moveDirectionListener != null)
                 _moveDirectionListener.onDirectionChanged(MoveDirection.TOP);
         } else if (_keyboardListener.isKeyPressed(_leftKey) && _physics.position.left() > _offsetX) {
-            _physics.setVelocity(-_physics.velocityX, 0, MoveDirection.LEFT);
+            _physics.setVelocity(-_physics.velocityX, 0);
 
             if (_moveDirectionListener != null)
                 _moveDirectionListener.onDirectionChanged(MoveDirection.LEFT);
         } else if (_keyboardListener.isKeyPressed(_bottomKey) && _physics.position.bottom() < _bounds.height) {
-            _physics.setVelocity(0, _physics.velocityY, MoveDirection.BOTTOM);
+            _physics.setVelocity(0, _physics.velocityY);
 
             if (_moveDirectionListener != null)
                 _moveDirectionListener.onDirectionChanged(MoveDirection.BOTTOM);
         } else if (_keyboardListener.isKeyPressed(_rightKey) && _physics.position.right() < _bounds.width) {
-            _physics.setVelocity(_physics.velocityX, 0, MoveDirection.RIGHT);
+            _physics.setVelocity(_physics.velocityX, 0);
 
             if (_moveDirectionListener != null)
                 _moveDirectionListener.onDirectionChanged(MoveDirection.RIGHT);
         } else {
-            _physics.setVelocity(0, 0, MoveDirection.BOTTOM);
+            _physics.setVelocity(0, 0);
         }
     }
 

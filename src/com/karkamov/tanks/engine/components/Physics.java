@@ -1,16 +1,12 @@
 package com.karkamov.tanks.engine.components;
 
-import com.karkamov.tanks.engine.components.enums.MoveDirection;
 import com.karkamov.tanks.engine.components.events.OutOfBoundsListener;
 import com.karkamov.tanks.engine.components.interfaces.Component;
 import com.karkamov.tanks.engine.entities.Entity;
 
-import java.util.ArrayList;
-
 public class Physics extends Component {
 
     public Position position;
-    public MoveDirection direction;
 
     public int velocityX;
     public int velocityY;
@@ -19,8 +15,6 @@ public class Physics extends Component {
     public int currentVelocityY = 0;
 
     private OutOfBoundsListener _outOfBoundsListener;
-    private boolean _intersecting = false;
-    public MoveDirection _intersectionDirection;
 
     public Physics(Entity entity, int velocity_x, int velocity_y) {
         super(entity);
@@ -55,7 +49,7 @@ public class Physics extends Component {
         _outOfBoundsListener = outOfBoundsListener;
     }
 
-    public void setVelocity(int x, int y, MoveDirection direction) {
+    public void setVelocity(int x, int y) {
         Position newPos = new Position(_entity, position.x + x,
                 position.y + y, position.getRectangle().getSize());
 
@@ -69,6 +63,5 @@ public class Physics extends Component {
 
         currentVelocityX = x;
         currentVelocityY = y;
-        this.direction = direction;
     }
 }
