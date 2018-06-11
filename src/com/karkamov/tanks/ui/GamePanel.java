@@ -11,6 +11,8 @@ import com.karkamov.tanks.engine.entities.Entity;
 import com.karkamov.tanks.engine.entities.EntityGroup;
 import com.karkamov.tanks.engine.entities.EntityManager;
 import com.karkamov.tanks.engine.KeyboardListener;
+import com.karkamov.tanks.map.LevelCreator;
+import com.karkamov.tanks.map.LevelReader;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,7 +23,11 @@ public class GamePanel extends JPanel {
     private final UIManager _uiManager;
     private final KeyboardListener _keyboardListener;
 
-    EntityManager _entityManager;
+    private EntityManager _entityManager;
+    private LevelCreator _levelCreator;
+
+    private String _lastLevel;
+    private boolean _playing = false;
 
     public GamePanel(UIManager uiManager, Display display, KeyboardListener keyboardListener) {
         _uiManager = uiManager;
@@ -29,11 +35,7 @@ public class GamePanel extends JPanel {
         _keyboardListener = keyboardListener;
 
         _entityManager = new EntityManager();
-
-        createPlayer();
-        createDestroyableBrick();
-        createUndestroyableBrick();
-        createEnemy();
+        _levelCreator = new LevelCreator(_entityManager, _display, _keyboardListener);
 
         _entityManager.init();
 
@@ -41,6 +43,9 @@ public class GamePanel extends JPanel {
     }
 
     public void update() {
+        if (!_playing)
+            return;
+
         _entityManager.update();
     }
 
@@ -58,121 +63,23 @@ public class GamePanel extends JPanel {
         _entityManager.draw(g);
     }
 
-    private void createPlayer() {
-        Entity player = _entityManager.createEntity();
-
-        Dimension playerSize = new Dimension(60, 60);
-
-        player.addComponent(new Position(player, 50, 50, playerSize));
-
-        Physics physics = new Physics(player, 3, 3);
-        physics.setOutOfBoundsListener(new OutOfBoundsListener() {
-            @Override
-            public boolean onPositionChange(Position position) {
-                for (Entity entity : _entityManager.getAllEntities()) {
-                    if (player != entity) {
-                        Position entityPosition = (Position) entity.getComponent(Position.class);
-
-                        if (position.intersects(entityPosition))
-                            return true;
-                    }
-                }
-
-                return false;
-            }
-        });
-
-        player.addComponent(physics);
-
-        Image imageComponent = new Image(player, _display, playerSize,
-                "resources/entities/player.png");
-
-        player.addComponent(imageComponent);
-
-        KeyboardMovable keyboardMovableComponent = new KeyboardMovable(player, _keyboardListener,
-                KeyEvent.VK_UP, KeyEvent.VK_LEFT, KeyEvent.VK_DOWN, KeyEvent.VK_RIGHT,
-                _display.getSize());
-
-        player.addComponent(keyboardMovableComponent);
-
-        KeyboardShooting keyboardShooting = new KeyboardShooting(player, _keyboardListener, _display.getSize());
-        player.addComponent(keyboardShooting);
-
-        keyboardMovableComponent.setMoveDirectionListener(new MoveDirectionListener() {
-            @Override
-            public void onDirectionChanged(MoveDirection direction) {
-                imageComponent.setDirection(direction);
-                keyboardShooting.setMoveDirection(direction);
-            }
-        });
-
-        keyboardShooting.setBulletPositionListener(new BulletPositionListener() {
-            @Override
-            public boolean onPositionChanged(BulletPhysics physics) {
-                for (Entity entity : _entityManager.getEntityGroup(EntityGroup.DESTROYABLE)) {
-                    Position position = (Position) entity.getComponent(Position.class);
-
-                    if (physics.position.intersects(position)) {
-                        entity.destroy();
-                        return true;
-                    }
-                }
-
-                for (Entity entity : _entityManager.getEntityGroup(EntityGroup.UNDESTROYABLE)) {
-                    Position position = (Position) entity.getComponent(Position.class);
-
-                    if (physics.position.intersects(position)) {
-                        return true;
-                    }
-                }
-
-                return false;
-            }
-        });
+    public void setLastLevel(String lastLevel) {
+        _lastLevel = lastLevel;
     }
 
-    private void createDestroyableBrick() {
-        Entity brick = _entityManager.createEntity();
+    public void start() {
+        if (_playing)
+            return;
 
-        Dimension playerSize = new Dimension(60, 60);
+        _entityManager.removeAll();
 
-        brick.addComponent(new Position(brick, 200, 50, playerSize));
-        Image imageComponent = new Image(brick, _display, playerSize,
-                "resources/entities/destroyableBrick.png");
+        LevelReader levelReader = new LevelReader();
+        levelReader.parseLevel(_lastLevel);
 
-        brick.addComponent(imageComponent);
+        _levelCreator.createLevel(levelReader);
 
-        _entityManager.addToGroup(EntityGroup.DESTROYABLE, brick);
-        brick.setLives(3);
+        _entityManager.init();
+
+        _playing = true;
     }
-
-    public void createUndestroyableBrick() {
-        Entity brick = _entityManager.createEntity();
-
-        Dimension brickSize = new Dimension(60, 60);
-
-        brick.addComponent(new Position(brick, 500, 200, brickSize));
-        Image imageComponent = new Image(brick, _display, brickSize,
-                "resources/entities/undestroyableBrick.png");
-
-        brick.addComponent(imageComponent);
-
-        _entityManager.addToGroup(EntityGroup.UNDESTROYABLE, brick);
-    }
-
-    private void createEnemy() {
-        Entity enemy = _entityManager.createEntity();
-
-        Dimension playerSize = new Dimension(60, 60);
-
-        enemy.addComponent(new Position(enemy, 150, 600, playerSize));
-        enemy.addComponent(new Physics(enemy, 3, 3));
-
-        Image imageComponent = new Image(enemy, _display, playerSize,
-                "resources/entities/enemy.png");
-        enemy.addComponent(imageComponent);
-        _entityManager.addToGroup(EntityGroup.DESTROYABLE, enemy);
-        enemy.setLives(3);
-    }
-
 }

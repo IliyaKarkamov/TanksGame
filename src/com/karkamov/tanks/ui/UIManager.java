@@ -40,12 +40,15 @@ public class UIManager {
                 _display.add(_gamePanel);
                 _currentPanel = _gamePanel;
                 _game.setPlaying(true);
+                _gamePanel.setLastLevel("resources/levels/1.level");
+                _gamePanel.start();
                 break;
 
             case CONTINUE_GAME:
                 _display.add(_gamePanel);
                 _currentPanel = _gamePanel;
                 _game.setPlaying(true);
+                _gamePanel.start();
                 break;
         }
     }

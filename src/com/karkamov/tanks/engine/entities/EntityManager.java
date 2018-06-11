@@ -56,5 +56,10 @@ public class EntityManager {
     public ArrayList<Entity> getAllEntities() {
         return _entities;
     }
+
+    public void removeAll() {
+        _entities.clear();
+        _groupedEntities.clear();
+    }
 }
 
